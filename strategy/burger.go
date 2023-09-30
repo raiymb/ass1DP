@@ -1,4 +1,4 @@
-package burger
+package strategy
 
 type Burger struct {
 	Ingredients []string

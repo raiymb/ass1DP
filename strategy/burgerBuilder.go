@@ -1,4 +1,4 @@
-package burger
+package strategy
 
 type BurgerBuilder interface {
 	BuildBurger() *Burger
