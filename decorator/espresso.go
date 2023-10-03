@@ -1,4 +1,4 @@
-package deсorator
+package decorator
 
 type Espresso struct{}
 

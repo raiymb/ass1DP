@@ -1,7 +1,9 @@
 package main
 
 import (
+	"ass1/abstractFactory"
 	"ass1/decorator"
+	"ass1/factory"
 	"ass1/observer"
 	"ass1/strategy"
 	"fmt"
@@ -54,4 +56,25 @@ func main() {
 		CoffeeDecorator: decorator.CoffeeDecorator{Coffee: coffeeWithCappuccino},
 	}
 	fmt.Printf("Price of Espresso with Cappuccino and Vanilla Latte topping is %d\n", coffeeWithCappuccinoAndVanillaLatte.GetPrice())
+	fmt.Println("Factory:")
+	smartphone, _ := factory.GetDevice("smartphone")
+	laptop, _ := factory.GetDevice("laptop")
+
+	factory.PrintDetails(smartphone)
+	factory.PrintDetails(laptop)
+	fmt.Println("Abstract Factory:")
+	ikeaFactory, _ := abstractFactory.GetFurnitureFactory("ikea")
+	ashleyFactory, _ := abstractFactory.GetFurnitureFactory("ashley")
+
+	ikeaChair := ikeaFactory.CreateChair()
+	ikeaTable := ikeaFactory.CreateTable()
+
+	ashleyChair := ashleyFactory.CreateChair()
+	ashleyTable := ashleyFactory.CreateTable()
+
+	abstractFactory.UseChair(ikeaChair)
+	abstractFactory.UseTable(ikeaTable)
+
+	abstractFactory.UseChair(ashleyChair)
+	abstractFactory.UseTable(ashleyTable)
 }
