@@ -1,6 +1,7 @@
 package main
 
 import (
+	"ass1/decorator"
 	"ass1/observer"
 	"ass1/strategy"
 	"fmt"
@@ -43,4 +44,14 @@ func main() {
 
 	burger3 := observer.NewBurger("Number 9 Large")
 	burgerOrder.AddBurger(burger3)
+
+	fmt.Println("Decorator:")
+	coffee := &decorator.Espresso{}
+	coffeeWithCappuccino := &decorator.Cappuccino{
+		CoffeeDecorator: decorator.CoffeeDecorator{Coffee: coffee},
+	}
+	coffeeWithCappuccinoAndVanillaLatte := &decorator.VanillaLatte{
+		CoffeeDecorator: decorator.CoffeeDecorator{Coffee: coffeeWithCappuccino},
+	}
+	fmt.Printf("Price of Espresso with Cappuccino and Vanilla Latte topping is %d\n", coffeeWithCappuccinoAndVanillaLatte.GetPrice())
 }
